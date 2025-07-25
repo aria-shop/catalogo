@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aria - Joyería Elegante</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style id="app-style">
+      :root {
+        --color-vino: #8A1814;
+        --color-negro: #000000;
+        --color-blanco: #FFFFFF;
+        --color-beige: #F7F3A4;
+        --color-offwhite: #FCFCFA;
+      }
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--color-offwhite);
+        color: var(--color-negro);
+        line-height: 1.5;
+      }
+      
+      .font-cinzel {
+        font-family: 'Cinzel', serif;
+      }
+      
+      .bg-vino {
+        background-color: var(--color-vino);
+      }
+      
+      .bg-beige {
+        background-color: var(--color-beige);
+      }
+      
+      .text-vino {
+        color: var(--color-vino);
+      }
+      
+      .border-vino {
+        border-color: var(--color-vino);
+      }
+      
+      .header {
+        background: linear-gradient(180deg, var(--color-vino) 0%, var(--color-negro) 100%);
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+        border-radius: 0 0 12px 12px;
+        color: var(--color-blanco);
+      }
+      
+      .logo {
+        font-size: 2.5rem;
+        letter-spacing: 0.1em;
+        color: var(--color-blanco);
+      }
+      
+      .logo-img {
+        height: 50px;
+        object-fit: contain;
+        margin-right: 1rem;
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      @media (min-width: 768px) {
+        .logo-img { 
+          height: 60px; 
+        }
+      }
+      
+      .filter-button {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+      }
+      
+      .filter-button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, var(--color-beige) 0%, #F0ECC0 100%);
+      }
+      
+      .filter-button:focus {
+        outline: 2px solid var(--color-vino);
+        outline-offset: 2px;
+      }
+      
+      .filter-button.active {
+        background-color: var(--color-vino);
+        color: var(--color-blanco);
+      }
+      
+      .product-card {
+        transition: all 0.3s ease;
+        background-color: var(--color-blanco);
+        border-radius: 12px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+      }
+      
+      .product-card:focus-within {
+        outline: 2px solid var(--color-vino);
+        outline-offset: 2px;
+      }
+      
+      .product-image {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        transition: transform 0.3s ease;
+      }
+      
+      .product-card:hover .product-image {
+        transform: scale(1.03);
+      }
+      
+      .product-title {
+        font-family: 'Cinzel', serif;
+        color: var(--color-negro);
+        position: relative;
+        display: inline-block;
+      }
+      
+      .product-title:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-vino);
+        transition: width 0.3s ease;
+      }
+      
+      .product-card:hover .product-title:after {
+        width: 100%;
+      }
+      
+      .product-price {
+        color: var(--color-vino);
+        font-weight: 600;
+      }
+      
+      footer {
+        background: linear-gradient(0deg, var(--color-vino) 0%, var(--color-negro) 100%);
+        border-radius: 12px 12px 0 0;
+      }
+      
+      footer .social-icon {
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      
+      footer .social-icon:hover {
+        color: var(--color-beige);
+        transform: translateY(-3px);
+      }
+      
+      @media (max-width: 768px) {
+        .product-image {
+          height: 200px;
+        }
+        
+        .filters-container {
+          overflow-x: auto;
+          white-space: nowrap;
+          padding: 1rem 0.5rem;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+          border-radius: 25px;
+          background-color: rgba(247, 243, 164, 0.2);
+          margin: 0 -0.5rem;
+        }
+        
+        .filters-container::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .filter-button {
+          scroll-snap-align: center;
+          margin: 0 0.5rem;
+        }
+      }
+      
+      .fade-enter {
+        opacity: 0;
+      }
+      
+      .fade-enter-active {
+        opacity: 1;
+        transition: opacity 300ms;
+      }
+      
+      .fade-exit {
+        opacity: 1;
+      }
+      
+      .fade-exit-active {
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header fixed w-full z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-center items-center relative">
+        <img src="./IMG-20250724-WA0039-removebg-preview.png" alt="Logo Aria" class="logo-img">
+        <h1 class="logo font-cinzel font-bold">Aria</h1>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+      <!-- Filters -->
+      <div class="filters-container mb-8 flex flex-wrap md:flex-nowrap justify-center md:justify-start">
+        <button id="all-filter" class="filter-button active mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Todos
+        </button>
+        <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Collares
+        </button>
+        <button id="bracelets-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Pulseras
+        </button>
+        <button id="rings-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Anillos
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <!-- Products will be inserted here by JavaScript -->
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-vino text-white py-10">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h2 class="font-cinzel text-2xl mb-3">Aria</h2>
+            <p class="text-sm">Joyería elegante y sofisticada</p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="javascript:void(0)" class="hover:text-beige transition-colors">
+              <i class="fab fa-instagram text-2xl social-icon"></i>
+            </a>
+  
+          </div>
+        </div>
+        <div class="mt-8 text-center text-sm">
+          <p>© 2025 Aria. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script id="app-script">
+      // Simulated product data
+      const products = [
+        {
+          id: 1,
+          title: "Collar Eternity",
+          category: "necklaces",
+          price: "$5",
+          description: "Descripcion.",
+          image: "https://cdn.pixabay.com/photo/2016/07/31/23/52/diamond-1559183_1280.jpg"
+        },
+        {
+          id: 2,
+          title: "Collar Mariposa Real",
+          category: "necklaces",
+          price: "$890.00",
+          description: "Collar con diseño de mariposa en oro rosa con incrustaciones de zafiros.",
+          image: "https://cdn.pixabay.com/photo/2018/05/26/18/06/necklace-3431860_1280.jpg"
+        },
+        {
+          id: 3,
+          title: "Pulsera Cascada",
+          category: "bracelets",
+          price: "$750.00",
+          description: "Elegante pulsera de plata con detalles en cristal de Swarovski.",
+          image: "https://cdn.pixabay.com/photo/2015/05/26/09/48/bracelet-784119_1280.jpg"
+        },
+        {
+          id: 4,
+          title: "Pulsera Tiempo Dorado",
+          category: "bracelets",
+          price: "$680.00",
+          description: "Pulsera de eslabones en oro de 18k con cierre magnético de seguridad.",
+          image: "https://cdn.pixabay.com/photo/2017/07/12/08/34/bracelet-2496563_1280.jpg"
+        },
+        {
+          id: 5,
+          title: "Anillo Luz de Luna",
+          category: "rings",
+          price: "$520.00",
+          description: "Anillo de platino con piedra lunar central y pequeños diamantes laterales.",
+          image: "https://cdn.pixabay.com/photo/2015/08/20/08/27/wedding-897333_1280.jpg"
+        },
+        {
+          id: 6,
+          title: "Anillo Realeza",
+          category: "rings",
+          price: "$950.00",
+          description: "Anillo de compromiso con zafiro central y diamantes en montura de oro blanco.",
+          image: "https://cdn.pixabay.com/photo/2018/01/04/11/12/luxury-3060508_1280.jpg"
+        },
+        {
+          id: 7,
+          title: "Collar Gota de Lluvia",
+          category: "necklaces",
+          price: "$780.00",
+          description: "Collar con colgante en forma de gota con aguamarina sobre cadena de oro.",
+          image: "https://cdn.pixabay.com/photo/2018/01/11/09/52/woman-3075704_1280.jpg"
+        },
+        {
+          id: 8,
+          title: "Pulsera Jardín Secreto",
+          category: "bracelets",
+          price: "$540.00",
+          description: "Pulsera rígida con motivos florales y piedras semipreciosas de colores.",
+          image: "https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_1280.jpg"
+        }
+      ];
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the products display
+        displayProducts(products);
+        
+        // Set up filter functionality
+        setupFilters();
+        
+        // Remove loading placeholders
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '';
+        
+        // Display all products initially
+        displayProducts(products);
+      });
+      
+      function displayProducts(productsToShow) {
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '';
+        
+        productsToShow.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'product-card overflow-hidden shadow border border-gray-100';
+          productCard.innerHTML = `
+            <a href="./producto/${product.id}.html" class="block" tabindex="0">
+              <img 
+                src="${product.image}" 
+                alt="${product.title}" 
+                class="product-image"
+              >
+              <div class="p-6">
+                <h3 class="product-title text-xl font-semibold mb-3">${product.title}</h3>
+                <p class="text-gray-600 text-sm mb-5">${product.description}</p>
+                <p class="product-price text-lg">${product.price}</p>
+              </div>
+            </a>
+          `;
+          productsContainer.appendChild(productCard);
+        });
+      }
+      
+      function setupFilters() {
+        const filterButtons = document.querySelectorAll('.filter-button');
+        
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get the filter type from the button id
+            const filterType = this.id.split('-')[0];
+            
+            // Filter the products
+            let filteredProducts;
+            
+            if (filterType === 'all') {
+              filteredProducts = products;
+            } else {
+              filteredProducts = products.filter(product => product.category === filterType);
+            }
+            
+            // Display the filtered products
+            displayProducts(filteredProducts);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
