@@ -57,7 +57,7 @@
         font-size: 2.5rem;
         letter-spacing: 0.1em;
         color: var(--color-beige);
-      }
+      } 
       
       .logo-img {
         height: 50px;
@@ -229,14 +229,23 @@
         <button id="all-filter" class="filter-button active mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Todos
         </button>
-        <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+        <!-- <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Collares
+        </button> -->
+        <button id="cadenas-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Cadenas
         </button>
         <button id="bracelets-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Pulseras
         </button>
         <button id="rings-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Anillos
+        </button>
+        <button id="argo-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Argollas
+        </button>
+        <button id="topos-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Topos
         </button>
       </div>
 
@@ -292,68 +301,76 @@
       const products = [
         {
           id: 1,
-          title: "Collar Eternity",
-          category: "necklaces",
-          price: "$10",
-          description: "Descripcion.",
+          title: "Anillo Con Perla Fina",
+          category: "rings",
+          price: "$4",
+          description: "Descubre el anillo de Perla Fina, una joya de diseño refinado y brillo excepcional, elaborada en metal bañado en rodio...",
           image: "https://cdn.pixabay.com/photo/2016/07/31/23/52/diamond-1559183_1280.jpg"
         },
-        // {
-        //   id: 2,
-        //   title: "Collar Mariposa Real",
-        //   category: "necklaces",
-        //   price: "$890.00",
-        //   description: "Collar con diseño de mariposa en oro rosa con incrustaciones de zafiros.",
-        //   image: "https://cdn.pixabay.com/photo/2018/05/26/18/06/necklace-3431860_1280.jpg"
-        // },
-        // {
-        //   id: 3,
-        //   title: "Pulsera Cascada",
-        //   category: "bracelets",
-        //   price: "$750.00",
-        //   description: "Elegante pulsera de plata con detalles en cristal de Swarovski.",
-        //   image: "https://cdn.pixabay.com/photo/2015/05/26/09/48/bracelet-784119_1280.jpg"
-        // },
-        // {
-        //   id: 4,
-        //   title: "Pulsera Tiempo Dorado",
-        //   category: "bracelets",
-        //   price: "$680.00",
-        //   description: "Pulsera de eslabones en oro de 18k con cierre magnético de seguridad.",
-        //   image: "https://cdn.pixabay.com/photo/2017/07/12/08/34/bracelet-2496563_1280.jpg"
-        // },
-        // {
-        //   id: 5,
-        //   title: "Anillo Luz de Luna",
-        //   category: "rings",
-        //   price: "$520.00",
-        //   description: "Anillo de platino con piedra lunar central y pequeños diamantes laterales.",
-        //   image: "https://cdn.pixabay.com/photo/2015/08/20/08/27/wedding-897333_1280.jpg"
-        // },
-        // {
-        //   id: 6,
-        //   title: "Anillo Realeza",
-        //   category: "rings",
-        //   price: "$950.00",
-        //   description: "Anillo de compromiso con zafiro central y diamantes en montura de oro blanco.",
-        //   image: "https://cdn.pixabay.com/photo/2018/01/04/11/12/luxury-3060508_1280.jpg"
-        // },
-        // {
-        //   id: 7,
-        //   title: "Collar Gota de Lluvia",
-        //   category: "necklaces",
-        //   price: "$780.00",
-        //   description: "Collar con colgante en forma de gota con aguamarina sobre cadena de oro.",
-        //   image: "https://cdn.pixabay.com/photo/2018/01/11/09/52/woman-3075704_1280.jpg"
-        // },
-        // {
-        //   id: 8,
-        //   title: "Pulsera Jardín Secreto",
-        //   category: "bracelets",
-        //   price: "$540.00",
-        //   description: "Pulsera rígida con motivos florales y piedras semipreciosas de colores.",
-        //   image: "https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_1280.jpg"
-        // }
+        {
+          id: 2,
+          title: "Anillo de Trébol",
+          category: "rings",
+          price: "$4",
+          description: "El anillo de Trébol es una joya que captura la esencia de la buena fortuna y la elegancia atemporal. Su diseño presenta un delicado trébol de cuatro hojas, símbolo universal de suerte y esperanza...",
+          image: "https://cdn.pixabay.com/photo/2018/05/26/18/06/necklace-3431860_1280.jpg"
+        },
+        {
+          id: 3,
+          title: "Topos Van Cleef Negro",
+          category: "topos",
+          price: "$2",
+          description: "Su tono negro profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+          image: "https://cdn.pixabay.com/photo/2015/05/26/09/48/bracelet-784119_1280.jpg"
+        },
+        {
+          id: 4,
+          title: "Topos Van Cleef Rojo",
+          category: "topos",
+          price: "$2",
+          description: "Su tono rojo profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+          image: "https://cdn.pixabay.com/photo/2017/07/12/08/34/bracelet-2496563_1280.jpg"
+        },
+        {
+          id: 5,
+          title: "Topos Van Cleef Blanco",
+          category: "topos",
+          price: "$2",
+          description: "Su tono blanco profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+          image: "https://cdn.pixabay.com/photo/2015/08/20/08/27/wedding-897333_1280.jpg"
+        },
+        {
+          id: 6,
+          title: "Pulsera Golden Ball",
+          category: "bracelets",
+          price: "$3",
+          description: "Pulsera Golden Ball, una joya de diseño sofisticado y contemporáneo. Elaborada en metal bañado en rodio...",
+          image: "https://cdn.pixabay.com/photo/2018/01/04/11/12/luxury-3060508_1280.jpg"
+        },
+        {
+          id: 7,
+          title: "Pulsera Silver Spheres",
+          category: "bracelets",
+          price: "$3",
+          description: "Una joya de diseño minimalista y atemporal compuesta por esferas plateadas pulidas que reflejan la luz con un brillo elegante y sofisticado...",
+          image: "https://cdn.pixabay.com/photo/2018/01/11/09/52/woman-3075704_1280.jpg"
+        },
+        {
+          id: 8,
+          title: "Cadena Luminous Butterfly",
+          category: "cadenas",
+          price: "$5",
+          description: "Una joya que fusiona delicadeza y brillo para destacar en cualquier ocasión. Su colgante de mariposa presenta un diseño exquisito...",
+          image: "https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_1280.jpg"
+        },
+        {
+          id: 9,
+          title: "Anillo Shiny Pearls",
+          category: "rings",
+          price: "$4",
+          description: "Una joya de diseño refinado pensada para destacar con sofisticación en cualquier ocasión...",
+          image: "https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_1280.jpg"
+        },
       ];
 
       document.addEventListener('DOMContentLoaded', function() {
