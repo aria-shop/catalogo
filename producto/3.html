@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aria - Joyería Elegante - Detalles del Producto</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style id="app-style">
+      :root {
+        --color-vino: #8a1814;
+        --color-negro: #000000;
+        --color-blanco: #ffffff;
+        --color-beige: #f7f3a4;
+        --color-offwhite: #fcfcfa;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--color-offwhite);
+        color: var(--color-negro);
+        line-height: 1.5;
+      }
+
+      .font-cinzel {
+        font-family: "Cinzel", serif;
+      }
+
+      .bg-vino {
+        background-color: var(--color-vino);
+      }
+
+      .bg-beige {
+        background-color: var(--color-beige);
+      }
+
+      .text-vino {
+        color: var(--color-vino);
+      }
+
+      .border-vino {
+        border-color: var(--color-vino);
+      }
+
+      .header {
+        background: linear-gradient(180deg, var(--color-vino) 0%, var(--color-negro) 100%);
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        border-radius: 0 0 12px 12px;
+        color: var(--color-blanco);
+      }
+
+      .logo {
+        font-size: 2.5rem;
+        letter-spacing: 0.1em;
+        color: var(--color-beige);
+      }
+
+      .logo-img {
+        height: 50px;
+        object-fit: contain;
+        margin-right: 1rem;
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      @media (min-width: 768px) {
+        .logo-img {
+          height: 60px;
+        }
+      }
+
+      .filter-button {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+      }
+
+      .filter-button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, var(--color-beige) 0%, #f0ecc0 100%);
+      }
+
+      .filter-button:focus {
+        outline: 2px solid var(--color-vino);
+        outline-offset: 2px;
+      }
+
+      .filter-button.active {
+        background-color: var(--color-vino);
+        color: var(--color-blanco);
+      }
+
+      .product-card {
+        transition: all 0.3s ease;
+        background-color: var(--color-blanco);
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15),
+          0 4px 6px -2px rgba(0, 0, 0, 0.08);
+      }
+
+      .product-card:focus-within {
+        outline: 2px solid var(--color-vino);
+        outline-offset: 2px;
+      }
+
+      .product-image {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover .product-image {
+        transform: scale(1.03);
+      }
+
+      .product-title {
+        font-family: "Cinzel", serif;
+        color: var(--color-negro);
+        position: relative;
+        display: inline-block;
+      }
+
+      .product-title:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-vino);
+        transition: width 0.3s ease;
+      }
+
+      .product-card:hover .product-title:after {
+        width: 100%;
+      }
+
+      .product-price {
+        color: var(--color-vino);
+        font-weight: 600;
+      }
+
+      footer {
+        background: linear-gradient(0deg, var(--color-vino) 0%, var(--color-negro) 100%);
+        border-radius: 12px 12px 0 0;
+      }
+
+      footer .social-icon {
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      footer .social-icon:hover {
+        color: var(--color-beige);
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .product-image {
+          height: 200px;
+        }
+
+        .filters-container {
+          overflow-x: auto;
+          white-space: nowrap;
+          padding: 1rem 0.5rem;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+          border-radius: 25px;
+          background-color: rgba(247, 243, 164, 0.2);
+          margin: 0 -0.5rem;
+        }
+
+        .filters-container::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+
+        .filter-button {
+          scroll-snap-align: center;
+          margin: 0 0.5rem;
+        }
+      }
+
+      .fade-enter {
+        opacity: 0;
+      }
+
+      .fade-enter-active {
+        opacity: 1;
+        transition: opacity 300ms;
+      }
+
+      .fade-exit {
+        opacity: 1;
+      }
+
+      .fade-exit-active {
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      /* Additional carousel styles */
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        margin-bottom: 2rem;
+      }
+
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 400px;
+      }
+
+      .carousel-item {
+        min-width: 100%;
+        height: 400px;
+      }
+
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+
+      .carousel-control:hover {
+        background-color: var(--color-vino);
+        color: white;
+      }
+
+      .carousel-control-prev {
+        left: 10px;
+      }
+
+      .carousel-control-next {
+        right: 10px;
+      }
+
+      .whatsapp-button {
+        background-color: var(--color-vino);
+        transition: all 0.3s ease;
+      }
+
+      .whatsapp-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header fixed w-full z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-center items-center relative">
+        <img
+          src="../icon.png"
+          alt="Logo Aria"
+          class="logo-img"
+        />
+        <h1 class="logo font-cinzel font-bold">Aria</h1>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+      <!-- Product Detail -->
+      <div class="flex flex-col md:flex-row">
+        <!-- Carousel Container -->
+        <div class="w-full md:w-1/2 md:pr-8">
+          <div class="carousel-container">
+            <div class="carousel-inner" id="carousel-inner">
+              <!-- Imágenes se insertan aquí por JavaScript -->
+            </div>
+            <div class="carousel-control carousel-control-prev" id="prevBtn">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-control carousel-control-next" id="nextBtn">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="w-full md:w-1/2">
+          <h1 id="product-title" class="font-cinzel text-3xl font-bold mb-4"></h1>
+          <p id="product-price" class="text-vino text-2xl font-semibold mb-4"></p>
+          <div id="product-description" class="text-gray-700 mb-8"></div>
+
+          <a
+            id="whatsapp-link"
+            href="#"
+            target="_blank"
+            class="bg-vino text-white rounded px-6 py-3 hover:bg-black inline-flex items-center font-medium"
+          >
+            <i class="fab fa-whatsapp mr-2 text-xl"></i>
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-vino text-white py-10">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h2 class="font-cinzel text-2xl mb-3">Aria</h2>
+            <p class="text-sm">Joyería elegante y sofisticada</p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="https://www.instagram.com/aria.mcbo/" target="_blank" class="hover:text-beige transition-colors">
+              <i class="fab fa-instagram text-2xl social-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="mt-8 text-center text-sm">
+          <p>© 2025 Aria. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Actualizo el producto con 3 imágenes diferentes en un array
+      const products = [
+        {
+          id: 1,
+          title: "Topos Van Cleef Negro",
+          price: "$2.5",
+          description:
+            "Su tono negro profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión. Acabados de alta calidad y detalles refinados garantizan elegancia atemporal y máxima distinción.",
+          images: [
+            "https://aria-shop.sirv.com/image/image/topos/3/PORTADA.jpg",
+            "https://aria-shop.sirv.com/image/image/topos/3/2.jpg",
+            "https://aria-shop.sirv.com/image/image/topos/3/3.jpg",
+            "https://aria-shop.sirv.com/image/image/topos/3/4.jpg",
+          ],
+          category: "topos",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tomamos siempre el producto con id=1 para demo
+        const productId = 1;
+
+        // Buscamos el producto en array
+        const product = products.find((p) => p.id === productId);
+
+        if (product) {
+          // Rellenamos detalles texto
+          document.getElementById("product-title").textContent = product.title;
+          document.getElementById("product-price").textContent = product.price;
+          document.getElementById("product-description").textContent =
+            product.description;
+
+          // Insertamos las imágenes del carrusel desde product.images
+          const carouselInner = document.getElementById("carousel-inner");
+          carouselInner.innerHTML = ""; // Limpiar si hubiera algo
+
+          product.images.forEach((imgSrc, index) => {
+            const carouselItem = document.createElement("div");
+            carouselItem.className = "carousel-item";
+            carouselItem.innerHTML = `<img src="${imgSrc}" alt="${product.title} - Imagen ${index +
+              1}" />`;
+            carouselInner.appendChild(carouselItem);
+          });
+
+          // WhatsApp aleatorio
+          const whatsappNumber = "584249339828"
+          const whatsappMessage = `Hola, estoy interesado en más detalles sobre ${product.title}.`;
+          const encodedMessage = encodeURIComponent(whatsappMessage);
+
+          const whatsappLink = document.getElementById("whatsapp-link");
+          whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+          // Inicializar carrusel
+          initCarousel();
+        } else {
+          // Producto no encontrado
+          document.querySelector("main").innerHTML = `
+            <div class="text-center py-16">
+              <h2 class="text-2xl font-bold mb-4">Producto no encontrado</h2>
+              <p class="mb-4">Lo sentimos, el producto que buscas no está disponible.</p>
+              <a href="index.html" class="bg-vino text-white rounded px-6 py-3 hover:bg-black">Volver a la tienda</a>
+            </div>
+          `;
+        }
+      });
+
+      function initCarousel() {
+        const carousel = document.getElementById("carousel-inner");
+        const items = document.querySelectorAll(".carousel-item");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        // Mover a slide específico
+        function moveToSlide(index) {
+          if (index < 0) index = totalItems - 1;
+          if (index >= totalItems) index = 0;
+
+          carousel.style.transform = `translateX(-${index * 100}%)`;
+          currentIndex = index;
+        }
+
+        // Botones prev/next
+        prevBtn.addEventListener("click", () => {
+          moveToSlide(currentIndex - 1);
+          resetAutoplay();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          moveToSlide(currentIndex + 1);
+          resetAutoplay();
+        });
+
+        // Autoplay
+        let autoplayInterval;
+
+        function startAutoplay() {
+          autoplayInterval = setInterval(() => {
+            moveToSlide(currentIndex + 1);
+          }, 3000);
+        }
+
+        function resetAutoplay() {
+          clearInterval(autoplayInterval);
+          startAutoplay();
+        }
+
+        // Iniciar
+        startAutoplay();
+      }
+    </script>
+  </body>
+</html>
