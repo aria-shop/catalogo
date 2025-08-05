@@ -1,73 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aria - Joyería Elegante - Detalles del Producto</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aria - Joyería Elegante</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style id="app-style">
       :root {
-        --color-vino: #8a1814;
+        --color-vino: #8A1814;
         --color-negro: #000000;
-        --color-blanco: #ffffff;
-        --color-beige: #f7f3a4;
-        --color-offwhite: #fcfcfa;
+        --color-blanco: #FFFFFF;
+        --color-beige: #F7F3A4;
+        --color-offwhite: #FCFCFA;
       }
-
+      
       body {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         background-color: var(--color-offwhite);
         color: var(--color-negro);
         line-height: 1.5;
       }
-
+      
       .font-cinzel {
-        font-family: "Cinzel", serif;
+        font-family: 'Cinzel', serif;
       }
-
+      
       .bg-vino {
         background-color: var(--color-vino);
       }
-
+      
       .bg-beige {
         background-color: var(--color-beige);
       }
-
+      
       .text-vino {
         color: var(--color-vino);
       }
-
+      
       .border-vino {
         border-color: var(--color-vino);
       }
-
+      
       .header {
         background: linear-gradient(180deg, var(--color-vino) 0%, var(--color-negro) 100%);
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
         border-radius: 0 0 12px 12px;
         color: var(--color-blanco);
       }
-
+      
       .logo {
         font-size: 2.5rem;
         letter-spacing: 0.1em;
         color: var(--color-beige);
-      }
-
+      } 
+      
       .logo-img {
         height: 50px;
         object-fit: contain;
@@ -77,52 +68,51 @@
         top: 50%;
         transform: translateY(-50%);
       }
-
+      
       @media (min-width: 768px) {
-        .logo-img {
-          height: 60px;
+        .logo-img { 
+          height: 60px; 
         }
       }
-
+      
       .filter-button {
         transition: all 0.3s ease;
         border-radius: 12px;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
       }
-
+      
       .filter-button:hover {
         transform: translateY(-2px);
-        background: linear-gradient(135deg, var(--color-beige) 0%, #f0ecc0 100%);
+        background: linear-gradient(135deg, var(--color-beige) 0%, #F0ECC0 100%);
       }
-
+      
       .filter-button:focus {
         outline: 2px solid var(--color-vino);
         outline-offset: 2px;
       }
-
+      
       .filter-button.active {
         background-color: var(--color-vino);
         color: var(--color-blanco);
       }
-
+      
       .product-card {
         transition: all 0.3s ease;
         background-color: var(--color-blanco);
         border-radius: 12px;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
       }
-
+      
       .product-card:hover {
         transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15),
-          0 4px 6px -2px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
       }
-
+      
       .product-card:focus-within {
         outline: 2px solid var(--color-vino);
         outline-offset: 2px;
       }
-
+      
       .product-image {
         height: 250px;
         object-fit: cover;
@@ -130,20 +120,20 @@
         border-radius: 12px 12px 0 0;
         transition: transform 0.3s ease;
       }
-
+      
       .product-card:hover .product-image {
         transform: scale(1.03);
       }
-
+      
       .product-title {
-        font-family: "Cinzel", serif;
+        font-family: 'Cinzel', serif;
         color: var(--color-negro);
         position: relative;
         display: inline-block;
       }
-
+      
       .product-title:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 0;
         height: 2px;
@@ -152,42 +142,36 @@
         background-color: var(--color-vino);
         transition: width 0.3s ease;
       }
-
+      
       .product-card:hover .product-title:after {
         width: 100%;
       }
-
+      
       .product-price {
         color: var(--color-vino);
         font-weight: 600;
       }
-
+      
       footer {
         background: linear-gradient(0deg, var(--color-vino) 0%, var(--color-negro) 100%);
         border-radius: 12px 12px 0 0;
       }
-
+      
       footer .social-icon {
         font-size: 1.5rem;
         transition: color 0.3s ease, transform 0.3s ease;
       }
-      #product-materials h2 {
-        font-family: 'Montserrat', sans-serif;
-        line-height: 1.5;
-        font-size: 30px;
-
-      }
-
+      
       footer .social-icon:hover {
         color: var(--color-beige);
         transform: translateY(-3px);
       }
-
+      
       @media (max-width: 768px) {
         .product-image {
           height: 200px;
         }
-
+        
         .filters-container {
           overflow-x: auto;
           white-space: nowrap;
@@ -199,98 +183,33 @@
           background-color: rgba(247, 243, 164, 0.2);
           margin: 0 -0.5rem;
         }
-
+        
         .filters-container::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera */
         }
-
+        
         .filter-button {
           scroll-snap-align: center;
           margin: 0 0.5rem;
         }
       }
-
+      
       .fade-enter {
         opacity: 0;
       }
-
+      
       .fade-enter-active {
         opacity: 1;
         transition: opacity 300ms;
       }
-
+      
       .fade-exit {
         opacity: 1;
       }
-
+      
       .fade-exit-active {
         opacity: 0;
         transition: opacity 300ms;
-      }
-
-      /* Additional carousel styles */
-      .carousel-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-        margin-bottom: 2rem;
-      }
-
-      .carousel-inner {
-        display: flex;
-        transition: transform 0.5s ease;
-        height: 400px;
-      }
-
-      .carousel-item {
-        min-width: 100%;
-        height: 400px;
-      }
-
-      .carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .carousel-control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s ease;
-      }
-
-      .carousel-control:hover {
-        background-color: var(--color-vino);
-        color: white;
-      }
-
-      .carousel-control-prev {
-        left: 10px;
-      }
-
-      .carousel-control-next {
-        right: 10px;
-      }
-
-      .whatsapp-button {
-        background-color: var(--color-vino);
-        transition: all 0.3s ease;
-      }
-
-      .whatsapp-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
@@ -298,50 +217,60 @@
     <!-- Header -->
     <header class="header fixed w-full z-50">
       <div class="container mx-auto px-4 py-4 flex justify-center items-center relative">
-        <img
-          src="../icon.png"
-          alt="Logo Aria"
-          class="logo-img"
-        />
+        <img src="./icon.png" alt="Logo Aria" class="logo-img">
         <h1 class="logo font-cinzel font-bold">Aria</h1>
       </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 pt-24 pb-12">
-      <!-- Product Detail -->
-      <div class="flex flex-col md:flex-row">
-        <!-- Carousel Container -->
-        <div class="w-full md:w-1/2 md:pr-8">
-          <div class="carousel-container">
-            <div class="carousel-inner" id="carousel-inner">
-              <!-- Imágenes se insertan aquí por JavaScript -->
-            </div>
-            <div class="carousel-control carousel-control-prev" id="prevBtn">
-              <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="carousel-control carousel-control-next" id="nextBtn">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-          </div>
+      <!-- Filters -->
+      <div class="filters-container mb-8 flex flex-wrap md:flex-nowrap justify-center md:justify-start">
+        <button id="all-filter" class="filter-button active mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Todos
+        </button>
+        <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Collares
+        </button>
+        <button id="cadenas-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Cadenas
+        </button>
+        <button id="bracelets-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Pulseras
+        </button>
+        <!-- <button id="rings-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Anillos
+        </button> -->
+<!--         <button id="argo-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Argollas
+        </button> -->
+        <button id="topos-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Topos
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <!-- Products will be inserted here by JavaScript -->
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
         </div>
-
-        <!-- Product Info -->
-        <div class="w-full md:w-1/2">
-          <h1 id="product-title" class="font-cinzel text-3xl font-bold mb-4"></h1>
-          <p id="product-price" class="text-vino text-2xl font-semibold mb-4"></p>
-          <div id="product-description" class="text-gray-700 mb-8"></div>
-          <div id="product-materials" class="mb-8"></div>
-
-          <a
-            id="whatsapp-link"
-            href="#"
-            target="_blank"
-            class="bg-vino text-white rounded px-6 py-3 hover:bg-black inline-flex items-center font-medium"
-          >
-            <i class="fab fa-whatsapp mr-2 text-xl"></i>
-            Consultar por WhatsApp
-          </a>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+        <div class="animate-pulse flex flex-col p-2">
+          <div class="bg-gray-200 h-48 w-full mb-4"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
         </div>
       </div>
     </main>
@@ -358,6 +287,7 @@
             <a href="https://www.instagram.com/aria.mcbo/" target="_blank" class="hover:text-beige transition-colors">
               <i class="fab fa-instagram text-2xl social-icon"></i>
             </a>
+  
           </div>
         </div>
         <div class="mt-8 text-center text-sm">
@@ -366,123 +296,344 @@
       </div>
     </footer>
 
-    <script>
-      // Actualizo el producto con 3 imágenes diferentes en un array
+    <script id="app-script">
+      // Simulated product data
       const products = [
+        // {
+        //   id: 1,
+        //   title: "Anillo Con Perla Fina",
+        //   category: "rings",
+        //   price: "$4",
+        //   description: "Descubre el anillo de Perla Fina, una joya de diseño refinado y brillo excepcional...",
+        //   image: "https://aria-shop.sirv.com/image/image/anillos/1/PORTADA.jpg"
+        // },
+        // {
+        //   id: 2,
+        //   title: "Anillo de Trébol",
+        //   category: "rings",
+        //   price: "$4",
+        //   description: "El anillo de Trébol es una joya que captura la esencia de la buena fortuna y la elegancia atemporal. Su diseño presenta un delicado trébol de cuatro hojas, símbolo universal de suerte y esperanza...",
+        //   image: "https://aria-shop.sirv.com/image/image/anillos/2/PORTADA.jpg"
+        // },
+        // {
+        //   id: 3,
+        //   title: "Topos Van Cleef Negro",
+        //   category: "topos",
+        //   price: "$2.5",
+        //   description: "Su tono negro profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+        //   image: "https://aria-shop.sirv.com/image/image/topos/3/PORTADA.jpg"
+        // },
         {
-          id: 1,
-          title: "Better Life",
-          price: "$8",
-          description:
-              "Es una joya que celebra la vitalidad y el optimismo a través de un diseño delicado y encantador. Esta pieza presenta una cadena fina con un dije en forma de corazón rojo, símbolo universal de amor, pasión y esperanza.",
-          materials: "- Acero Inoxidable <br>- Dije de Oro Laminado</br>",
-            images: [
-            "https://aria-shop.sirv.com/image/image/cadenas/33/PORTADA.jpeg",
-            "https://aria-shop.sirv.com/image/image/cadenas/33/1.jpeg",
-          ],
+          id: 4,
+          title: "Topos Van Cleef Rojo",
+          category: "topos",
+          price: "$2.5",
+          description: "Su tono rojo profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+          image: "https://aria-shop.sirv.com/image/image/topos/4/PORTADA.jpg"
+        },
+        // {
+        //   id: 5,
+        //   title: "Topos Van Cleef Blanco",
+        //   category: "topos",
+        //   price: "$2.5",
+        //   description: "Su tono blanco profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
+        //   image: "https://aria-shop.sirv.com/image/image/topos/5/PORTADA.jpg"
+        // },
+        // {
+        //   id: 6,
+        //   title: "Pulsera Golden Ball",
+        //   category: "bracelets",
+        //   price: "$4",
+        //   description: "Pulsera Golden Ball, una joya de diseño sofisticado y contemporáneo...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/6/PORTADA.jpg"
+        // },
+        // {
+        //   id: 7,
+        //   title: "Pulsera Silver Spheres",
+        //   category: "bracelets",
+        //   price: "$4",
+        //   description: "Una joya de diseño minimalista y atemporal compuesta por esferas plateadas pulidas que reflejan la luz con un brillo elegante y sofisticado...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/7/PORTADA.jpg"
+        // },
+        // {
+        //   id: 8,
+        //   title: "Cadena Luminous Butterfly",
+        //   category: "cadenas",
+        //   price: "$6",
+        //   description: "Una joya que fusiona delicadeza y brillo para destacar en cualquier ocasión. Su colgante de mariposa presenta un diseño exquisito...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/8/PORTADA.jpg"
+        // },
+        // {
+        //   id: 9,
+        //   title: "Anillo Shiny Pearls",
+        //   category: "rings",
+        //   price: "$4",
+        //   description: "Una joya de diseño refinado pensada para destacar con sofisticación en cualquier ocasión...",
+        //   image: "https://aria-shop.sirv.com/image/image/anillos/9/3.jpg"
+        // },
+        // {
+        //   id: 10,
+        //   title: "Link Bracelet",
+        //   category: "bracelets",
+        //   price: "$4",
+        //   description: "Una propuesta de joyería sofisticada y atemporal que se adapta a todos los estilos. Su diseño...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/10/PORTADA.jpg"
+        // },
+        {
+          id: 11,
+          title: "Pulsera Riqueza Viva",
+          category: "bracelets",
+          price: "$4",
+          description: "Pulsera Riqueza Viva, una joya cargada de energía positiva y simbolismo ancestral, ideal para...",
+          image: "https://aria-shop.sirv.com/image/image/pulseras/11/PORTADA.jpg"
+        },
+        // {
+        //   id: 12,
+        //   title: "Cadena Pétalos de Cristal",
+        //   category: "cadenas",
+        //   price: "$6",
+        //   description: "Una joya que captura la esencia de la delicadeza y la luz en cada detalle. Su diseño presenta un...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/19/PORTADA.jpg"
+        // },
+        // {
+        //   id: 13,
+        //   title: "Cadena de Union",
+        //   category: "cadenas",
+        //   price: "$6",
+        //   description: "Es una joya que simboliza la conexión profunda, el amor y la armonía entre dos almas. Su diseño...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/13/PORTADA.jpg"
+        // },
+        // {
+        //   id: 14,
+        //   title: "Topo of the Shine",
+        //   category: "topos",
+        //   price: "$1.5",
+        //   description: "Pequeños pendientes que capturan la luz con un brillo intenso y sofisticado, ideales para aportar un...",
+        //   image: "https://aria-shop.sirv.com/image/image/topos/14/PORTADA.jpg"
+        // },
+        // {
+        //   id: 15,
+        //   title: "Pulsera de la Elegancia",
+        //   category: "bracelets",
+        //   price: "$4",
+        //   description: "Una joya atemporal diseñada para realzar tu estilo con máxima distinción. Su diseño refinado combina líneas...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/15/PORTADA.jpg"
+        // },
+        // {
+        //   id: 16,
+        //   title: "Pulsera de la Armonía",
+        //   category: "bracelets",
+        //   price: "$4",
+        //   description: "Una joya creada para reflejar el equilibrio, la serenidad y la belleza en cada detalle...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/16/PORTADA.jpg"
+        // },
+        // {
+        //   id: 17,
+        //   title: "Topos of Dreams",
+        //   category: "topos",
+        //   price: "$1.5",
+        //   description: "Pendientes que capturan la delicadeza y el misterio de los sueños en su diseño minimalista y sofisticado...",
+        //   image: "https://aria-shop.sirv.com/image/image/topos/17/PORTADA.jpg"
+        // },
+        // {
+        //   id: 18,
+        //   title: "Cadena del Deseo",
+        //   category: "cadenas",
+        //   price: "$6",
+        //   description: "Son mucho más que un accesorio: son un símbolo de aspiraciones, esperanza y la fuerza interior...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/18/PORTADA.jpg"
+        // },
+        // {
+        //   id: 19,
+        //   title: "Cadena de la Felicidad",
+        //   category: "cadenas",
+        //   price: "$6",
+        //   description: "Una pieza diseñada para iluminar tu vida diaria con su delicadeza y significado especial...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/12/PORTADA.jpg"
+        // },
+        // {
+        //   id: 20,
+        //   title: "Topos of the Feeling",
+        //   category: "topos",
+        //   price: "$1.5",
+        //   description: "Pendientes diseñados para expresar emociones y sensaciones a través de su forma delicada y contemporánea. Su acabado pulido y...",
+        //   image: "https://aria-shop.sirv.com/image/image/topos/20/PORTADA.jpg"
+        // },
+        // {
+        //   id: 21,
+        //   title: "Argolla de la Pureza",
+        //   category: "argo",
+        //   price: "$4",
+        //   description: "Representa la esencia de la pureza, tanto en su diseño sencillo como elegante...",
+        //   image: "https://aria-shop.sirv.com/image/image/argo/21/PORTADA.jpg"
+        // },
+        {
+          id: 22,
+          title: "Cadena del Amor",
           category: "cadenas",
+          price: "$6",
+          description: "Una joya que celebra los sentimientos más profundos y auténticos...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/22/PORTADA.jpg"
+        },
+        // {
+        //   id: 23,
+        //   title: "Set Van Cleef Negro",
+        //   category: "necklaces",
+        //   price: "$10",
+        //   description: "Un collar Van Cleef negro destaca por su diseño distinguido, sofisticado y atemporal. Sus líneas armoniosas y...",
+        //   image: "https://aria-shop.sirv.com/image/image/collares/23/PORTADA.jpeg"
+        // },
+        {
+          id: 24,
+          title: "Set Van Cleef Rojo",
+          category: "necklaces",
+          price: "$10",
+          description: "Un collar Van Cleef rojo destaca por su diseño distinguido, sofisticado y atemporal. Sus líneas armoniosas y...",
+          image: "https://aria-shop.sirv.com/image/image/collares/24/PORTADA.jpeg"
+        },
+        // {
+        //   id: 25,
+        //   title: "Argollas Wealth",
+        //   category: "argo",
+        //   price: "$7",
+        //   description: "Las Argollas Wealth representan un simbolismo de éxito y prosperidad a través de un diseño sofisticado y contemporáneo. Estas...",
+        //   image: "https://aria-shop.sirv.com/image/image/argo/25/PORTADA.jpeg"
+        // },
+        {
+          id: 26,
+          title: "Rueda del Brillo",
+          category: "cadenas",
+          price: "$8",
+          description: "La Rueda del Brillo es una pieza que destaca por su acabado impecable y su capacidad para reflejar la...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/26/PORTADA.jpeg"
+        },
+        {
+          id: 27,
+          title: "Golden Flower",
+          category: "cadenas",
+          price: "$8",
+          description: "Golden Flower es una joya inspirada en la delicadeza y vitalidad de las flores, diseñada para...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/27/PORTADA.jpeg"
+        },
+        // {
+        //   id: 28,
+        //   title: "Brazalete de la Belleza",
+        //   category: "bracelets",
+        //   price: "$7",
+        //   description: "El Brazalete de la Belleza es una joya que destaca por su diseño armonioso y sofisticado, concebido para...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/28/PORTADA.jpeg"
+        // },
+        // {
+        //   id: 29,
+        //   title: "Golden Kingdom",
+        //   category: "bracelets",
+        //   price: "$7",
+        //   description: "Golden Kingdom es una joya que evoca majestuosidad y esplendor, inspirada en la riqueza y el poder de los reinos dorados. Su diseño transmite una sensación de grandeza...",
+        //   image: "https://aria-shop.sirv.com/image/image/pulseras/29/PORTADA.jpeg"
+        // },
+        // {
+        //   id: 30,
+        //   title: "Flor del Mar",
+        //   category: "cadenas",
+        //   price: "$8",
+        //   description: "Flor del Mar es una joya inspirada en los misterios y la belleza del océano. Su diseño evoca la...",
+        //   image: "https://aria-shop.sirv.com/image/image/cadenas/30/PORTADA.jpeg"
+        // },
+        // {
+        //   id: 31,
+        //   title: "Anillo Bright Heart",
+        //   category: "rings",
+        //   price: "$7",
+        //   description: "El Anillo Bright Heart es una joya que destaca por la delicadeza y el simbolismo...",
+        //   image: "https://aria-shop.sirv.com/image/image/anillos/31/PORTADA.jpeg"
+        // },
+         {
+          id: 32,
+          title: "Argolla Specials",
+          category: "argo",
+          price: "$5",
+          description: "Piezas que destacan por su diseño único y significativo, creadas para celebrar momentos especiales y vínculos profundos. Su...",
+          image: "https://aria-shop.sirv.com/image/image/argo/32/PORTADA.jpeg"
+        },
+        {
+          id: 33,
+          title: "Better Life",
+          category: "cadenas",
+          price: "$8",
+          description: "Es una joya que celebra la vitalidad y el optimismo a través de...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/33/PORTADA.jpeg"
         },
       ];
+      
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // Tomamos siempre el producto con id=1 para demo
-        const productId = 1;
-
-        // Buscamos el producto en array
-        const product = products.find((p) => p.id === productId);
-
-        if (product) {
-          // Rellenamos detalles texto
-          document.getElementById("product-title").textContent = product.title;
-          document.getElementById("product-price").textContent = product.price;
-          document.getElementById("product-description").textContent =
-            product.description;
-          const productMaterials = document.getElementById("product-materials");
-          // Insertar título "Materiales" y el texto de materiales
-          productMaterials.innerHTML = `
-          <h2 class="font-semibold mb-2 text-negro">Material</h2>
-          <p class="text-gray-700">${product.materials}</p>
-          `;
-
-          // Insertamos las imágenes del carrusel desde product.images
-          const carouselInner = document.getElementById("carousel-inner");
-          carouselInner.innerHTML = ""; // Limpiar si hubiera algo
-
-          product.images.forEach((imgSrc, index) => {
-            const carouselItem = document.createElement("div");
-            carouselItem.className = "carousel-item";
-            carouselItem.innerHTML = `<img src="${imgSrc}" alt="${product.title} - Imagen ${index +
-              1}" />`;
-            carouselInner.appendChild(carouselItem);
-          });
-
-          // WhatsApp aleatorio
-          const whatsappNumber = "584249339828"
-          const whatsappMessage = `Hola, estoy interesado en más detalles sobre ${product.title}.`;
-          const encodedMessage = encodeURIComponent(whatsappMessage);
-
-          const whatsappLink = document.getElementById("whatsapp-link");
-          whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-          // Inicializar carrusel
-          initCarousel();
-        } else {
-          // Producto no encontrado
-          document.querySelector("main").innerHTML = `
-            <div class="text-center py-16">
-              <h2 class="text-2xl font-bold mb-4">Producto no encontrado</h2>
-              <p class="mb-4">Lo sentimos, el producto que buscas no está disponible.</p>
-              <a href="../index.html" class="bg-vino text-white rounded px-6 py-3 hover:bg-black">Volver a la tienda</a>
-            </div>
-          `;
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the products display
+        displayProducts(products);
+        
+        // Set up filter functionality
+        setupFilters();
+        
+        // Remove loading placeholders
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '';
+        
+        // Display all products initially
+        displayProducts(products);
       });
-
-      function initCarousel() {
-        const carousel = document.getElementById("carousel-inner");
-        const items = document.querySelectorAll(".carousel-item");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-
-        let currentIndex = 0;
-        const totalItems = items.length;
-
-        // Mover a slide específico
-        function moveToSlide(index) {
-          if (index < 0) index = totalItems - 1;
-          if (index >= totalItems) index = 0;
-
-          carousel.style.transform = `translateX(-${index * 100}%)`;
-          currentIndex = index;
-        }
-
-        // Botones prev/next
-        prevBtn.addEventListener("click", () => {
-          moveToSlide(currentIndex - 1);
-          resetAutoplay();
+      
+      function displayProducts(productsToShow) {
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '';
+        
+        productsToShow.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'product-card overflow-hidden shadow border border-gray-100';
+          productCard.innerHTML = `
+            <a href="./producto/${product.id}.html" class="block" tabindex="0">
+              <img 
+                src="${product.image}" 
+                alt="${product.title}" 
+                class="product-image"
+                >
+              <div class="p-6">
+                <h3 class="product-title text-xl font-semibold mb-3">${product.title}</h3>
+                <p class="text-gray-600 text-sm mb-5">${product.description}</p>
+                <p class="product-price text-lg">${product.price}</p>
+              </div>
+            </a>
+          `;
+          productsContainer.appendChild(productCard);
         });
+      }
+      
+      function setupFilters() {
+        const filterButtons = document.querySelectorAll('.filter-button');
+        
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get the filter type from the button id
+            const filterType = this.id.split('-')[0];
+            
+            // Filter the products
+            let filteredProducts;
+            
+            if (filterType === 'all') {
+              filteredProducts = products;
+            } else {
+              filteredProducts = products.filter(product => product.category === filterType);
 
-        nextBtn.addEventListener("click", () => {
-          moveToSlide(currentIndex + 1);
-          resetAutoplay();
+            }
+            
+            // Display the filtered products
+            displayProducts(filteredProducts);
+          });
         });
-
-        // Autoplay
-        let autoplayInterval;
-
-        function startAutoplay() {
-          autoplayInterval = setInterval(() => {
-            moveToSlide(currentIndex + 1);
-          }, 3000);
-        }
-
-        function resetAutoplay() {
-          clearInterval(autoplayInterval);
-          startAutoplay();
-        }
-
-        // Iniciar
-        startAutoplay();
       }
     </script>
   </body>
