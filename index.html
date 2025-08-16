@@ -229,23 +229,26 @@
         <button id="all-filter" class="filter-button active mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Todos
         </button>
-        <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
-          Collares
-        </button>
+        <!-- <button id="necklaces-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all"> -->
+          <!-- Collares
+        </button> -->
         <button id="cadenas-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Cadenas
         </button>
         <button id="bracelets-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Pulseras
         </button>
-        <!-- <button id="rings-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+        <button id="rings-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Anillos
-        </button> -->
-<!--         <button id="argo-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+        </button>
+        <button id="argo-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Argollas
-        </button> -->
-        <button id="topos-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+        </button>
+        <!-- <button id="topos-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
           Topos
+        </button> -->
+        <button id="sets-filter" class="filter-button mx-1 mb-2 px-6 py-2 rounded-full bg-beige hover:bg-vino hover:text-white font-medium transition-all">
+          Sets
         </button>
       </div>
 
@@ -299,269 +302,141 @@
     <script id="app-script">
       // Simulated product data
       const products = [
-        // {
-        //   id: 1,
-        //   title: "Anillo Con Perla Fina",
-        //   category: "rings",
-        //   price: "$4",
-        //   description: "Descubre el anillo de Perla Fina, una joya de diseño refinado y brillo excepcional...",
-        //   image: "https://aria-shop.sirv.com/image/image/anillos/1/PORTADA.jpg"
-        // },
-        // {
-        //   id: 2,
-        //   title: "Anillo de Trébol",
-        //   category: "rings",
-        //   price: "$4",
-        //   description: "El anillo de Trébol es una joya que captura la esencia de la buena fortuna y la elegancia atemporal. Su diseño presenta un delicado trébol de cuatro hojas, símbolo universal de suerte y esperanza...",
-        //   image: "https://aria-shop.sirv.com/image/image/anillos/2/PORTADA.jpg"
-        // },
-        // {
-        //   id: 3,
-        //   title: "Topos Van Cleef Negro",
-        //   category: "topos",
-        //   price: "$2.5",
-        //   description: "Su tono negro profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
-        //   image: "https://aria-shop.sirv.com/image/image/topos/3/PORTADA.jpg"
-        // },
+        {
+          id: 1,
+          title: "Anillo Promise Of Life",
+          category: "rings",
+          price: "$7",
+          description: "Celebra el compromiso y la esperanza con nuestro anillo 'Promise of Life'. Este elegante diseño simboliza la promesa de amor, vida y...",
+          image: "https://aria-shop.sirv.com/image/image/anillos/1/PORTADA.jpg"
+        },
+        {
+          id: 2,
+          title: "Anillo Magic of Heaven",
+          category: "rings",
+          price: "$7",
+          description: "Descubre la elegancia y el misterio con nuestro anillo Magic of Heaven. Inspirado en la magia y la armonía celestial, este anillo ...",
+          image: "https://aria-shop.sirv.com/image/image/anillos/2/PORTADA.jpg"
+        },
+        {
+          id: 3,
+          title: "Argolla Good Life",
+          category: "argo",
+          price: "$6",
+          description: "Celebra la vida plena y llena de momentos felices con nuestra argolla Good Life. Su diseño simple pero sofisticado simboliza la alegría...",
+          image: "https://aria-shop.sirv.com/image/image/argo/3/PORTADA.jpg"
+        },
         {
           id: 4,
-          title: "Topos Van Cleef Rojo",
-          category: "topos",
-          price: "$2.5",
-          description: "Su tono rojo profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
-          image: "https://aria-shop.sirv.com/image/image/topos/4/PORTADA.jpg"
+          title: "Argolla Bright Life",
+          category: "argo",
+          price: "$6",
+          description: "Ilumina tus momentos especiales con nuestra argolla Bright Life. Su diseño moderno...",
+          image: "https://aria-shop.sirv.com/image/image/argo/4/PORTADA.jpg"
         },
-        // {
-        //   id: 5,
-        //   title: "Topos Van Cleef Blanco",
-        //   category: "topos",
-        //   price: "$2.5",
-        //   description: "Su tono blanco profundo aporta un aire de misterio y sofisticación ideal para cualquier ocasión.",
-        //   image: "https://aria-shop.sirv.com/image/image/topos/5/PORTADA.jpg"
-        // },
-        // {
-        //   id: 6,
-        //   title: "Pulsera Golden Ball",
-        //   category: "bracelets",
-        //   price: "$4",
-        //   description: "Pulsera Golden Ball, una joya de diseño sofisticado y contemporáneo...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/6/PORTADA.jpg"
-        // },
-        // {
-        //   id: 7,
-        //   title: "Pulsera Silver Spheres",
-        //   category: "bracelets",
-        //   price: "$4",
-        //   description: "Una joya de diseño minimalista y atemporal compuesta por esferas plateadas pulidas que reflejan la luz con un brillo elegante y sofisticado...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/7/PORTADA.jpg"
-        // },
-        // {
-        //   id: 8,
-        //   title: "Cadena Luminous Butterfly",
-        //   category: "cadenas",
-        //   price: "$6",
-        //   description: "Una joya que fusiona delicadeza y brillo para destacar en cualquier ocasión. Su colgante de mariposa presenta un diseño exquisito...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/8/PORTADA.jpg"
-        // },
-        // {
-        //   id: 9,
-        //   title: "Anillo Shiny Pearls",
-        //   category: "rings",
-        //   price: "$4",
-        //   description: "Una joya de diseño refinado pensada para destacar con sofisticación en cualquier ocasión...",
-        //   image: "https://aria-shop.sirv.com/image/image/anillos/9/3.jpg"
-        // },
-        // {
-        //   id: 10,
-        //   title: "Link Bracelet",
-        //   category: "bracelets",
-        //   price: "$4",
-        //   description: "Una propuesta de joyería sofisticada y atemporal que se adapta a todos los estilos. Su diseño...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/10/PORTADA.jpg"
-        // },
+        {
+          id: 5,
+          title: "Cadena Shiny Bear",
+          category: "cadenas",
+          price: "$8",
+          description: "Luce un toque de ternura y estilo con la cadena Shiny Bear...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/5/PORTADA.jpg"
+        },
+        {
+          id: 6,
+          title: "Cadena Golden Starfish",
+          category: "cadenas",
+          price: "$8",
+          description: "Inspírate en la belleza del mar con la joya Golden Starfish, un colgante que captura la elegancia...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/6/PORTADA.jpg"
+        },
+        {
+          id: 7,
+          title: "Cadena Dolphin World",
+          category: "cadenas",
+          price: "$8",
+          description: "Conecta con la energía, inteligencia y belleza del océano con la joya Dolphin World. Esta colección inspirada en los delfines...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/7/PORTADA.jpg"
+        },
+        {
+          id: 8,
+          title: "Cadena White Stone",
+          category: "cadenas",
+          price: "$8",
+          description: "Añade un toque de elegancia y sofisticación a tu look con la cadena White Stone. Esta pieza destaca por su...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/8/PORTADA.jpg"
+        },
+        {
+          id: 9,
+          title: "Cadena Faith",
+          category: "cadenas",
+          price: "$8",
+          description: "Inspira confianza y espiritualidad con la cadena Faith, un accesorio que simboliza la...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/9/PORTADA.jpg"
+        },
+        {
+          id: 10,
+          title: "Cadena Shiny Dolphin",
+          category: "cadenas",
+          price: "$8",
+          description: "Lleva contigo la alegría y la inteligencia del delfín con la cadena Shiny Dolphin. Esta pieza...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/10/PORTADA.jpg"
+        },
         {
           id: 11,
-          title: "Pulsera Riqueza Viva",
+          title: "Cadena Cristal Heart",
+          category: "cadenas",
+          price: "$8",
+          description: "Exprésate con elegancia y delicadeza gracias a Cristal Heart, un colgante que captura la belleza y la pureza del corazón cristalino. Este diseño...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/11/PORTADA.jpg"
+        },
+        {
+          id: 12,
+          title: "Cadena Music Life",
+          category: "cadenas",
+          price: "$8",
+          description: "Siente el ritmo y la pasión de la música con la cadena Music Life, un accesorio diseñado para los amantes de las melodías y...",
+          image: "https://aria-shop.sirv.com/image/image/cadenas/12/PORTADA.jpg"
+        },
+        {
+          id: 13,
+          title: "Pulsera Golden Kingdom",
           category: "bracelets",
-          price: "$4",
-          description: "Pulsera Riqueza Viva, una joya cargada de energía positiva y simbolismo ancestral, ideal para...",
-          image: "https://aria-shop.sirv.com/image/image/pulseras/11/PORTADA.jpg"
-        },
-        // {
-        //   id: 12,
-        //   title: "Cadena Pétalos de Cristal",
-        //   category: "cadenas",
-        //   price: "$6",
-        //   description: "Una joya que captura la esencia de la delicadeza y la luz en cada detalle. Su diseño presenta un...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/19/PORTADA.jpg"
-        // },
-        // {
-        //   id: 13,
-        //   title: "Cadena de Union",
-        //   category: "cadenas",
-        //   price: "$6",
-        //   description: "Es una joya que simboliza la conexión profunda, el amor y la armonía entre dos almas. Su diseño...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/13/PORTADA.jpg"
-        // },
-        // {
-        //   id: 14,
-        //   title: "Topo of the Shine",
-        //   category: "topos",
-        //   price: "$1.5",
-        //   description: "Pequeños pendientes que capturan la luz con un brillo intenso y sofisticado, ideales para aportar un...",
-        //   image: "https://aria-shop.sirv.com/image/image/topos/14/PORTADA.jpg"
-        // },
-        // {
-        //   id: 15,
-        //   title: "Pulsera de la Elegancia",
-        //   category: "bracelets",
-        //   price: "$4",
-        //   description: "Una joya atemporal diseñada para realzar tu estilo con máxima distinción. Su diseño refinado combina líneas...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/15/PORTADA.jpg"
-        // },
-        // {
-        //   id: 16,
-        //   title: "Pulsera de la Armonía",
-        //   category: "bracelets",
-        //   price: "$4",
-        //   description: "Una joya creada para reflejar el equilibrio, la serenidad y la belleza en cada detalle...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/16/PORTADA.jpg"
-        // },
-        // {
-        //   id: 17,
-        //   title: "Topos of Dreams",
-        //   category: "topos",
-        //   price: "$1.5",
-        //   description: "Pendientes que capturan la delicadeza y el misterio de los sueños en su diseño minimalista y sofisticado...",
-        //   image: "https://aria-shop.sirv.com/image/image/topos/17/PORTADA.jpg"
-        // },
-        // {
-        //   id: 18,
-        //   title: "Cadena del Deseo",
-        //   category: "cadenas",
-        //   price: "$6",
-        //   description: "Son mucho más que un accesorio: son un símbolo de aspiraciones, esperanza y la fuerza interior...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/18/PORTADA.jpg"
-        // },
-        // {
-        //   id: 19,
-        //   title: "Cadena de la Felicidad",
-        //   category: "cadenas",
-        //   price: "$6",
-        //   description: "Una pieza diseñada para iluminar tu vida diaria con su delicadeza y significado especial...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/12/PORTADA.jpg"
-        // },
-        // {
-        //   id: 20,
-        //   title: "Topos of the Feeling",
-        //   category: "topos",
-        //   price: "$1.5",
-        //   description: "Pendientes diseñados para expresar emociones y sensaciones a través de su forma delicada y contemporánea. Su acabado pulido y...",
-        //   image: "https://aria-shop.sirv.com/image/image/topos/20/PORTADA.jpg"
-        // },
-        // {
-        //   id: 21,
-        //   title: "Argolla de la Pureza",
-        //   category: "argo",
-        //   price: "$4",
-        //   description: "Representa la esencia de la pureza, tanto en su diseño sencillo como elegante...",
-        //   image: "https://aria-shop.sirv.com/image/image/argo/21/PORTADA.jpg"
-        // },
-        {
-          id: 22,
-          title: "Cadena del Amor",
-          category: "cadenas",
-          price: "$6",
-          description: "Una joya que celebra los sentimientos más profundos y auténticos...",
-          image: "https://aria-shop.sirv.com/image/image/cadenas/22/PORTADA.jpg"
-        },
-        // {
-        //   id: 23,
-        //   title: "Set Van Cleef Negro",
-        //   category: "necklaces",
-        //   price: "$10",
-        //   description: "Un collar Van Cleef negro destaca por su diseño distinguido, sofisticado y atemporal. Sus líneas armoniosas y...",
-        //   image: "https://aria-shop.sirv.com/image/image/collares/23/PORTADA.jpeg"
-        // },
-        {
-          id: 24,
-          title: "Set Van Cleef Rojo",
-          category: "necklaces",
-          price: "$10",
-          description: "Un collar Van Cleef rojo destaca por su diseño distinguido, sofisticado y atemporal. Sus líneas armoniosas y...",
-          image: "https://aria-shop.sirv.com/image/image/collares/24/PORTADA.jpeg"
-        },
-        // {
-        //   id: 25,
-        //   title: "Argollas Wealth",
-        //   category: "argo",
-        //   price: "$7",
-        //   description: "Las Argollas Wealth representan un simbolismo de éxito y prosperidad a través de un diseño sofisticado y contemporáneo. Estas...",
-        //   image: "https://aria-shop.sirv.com/image/image/argo/25/PORTADA.jpeg"
-        // },
-        {
-          id: 26,
-          title: "Rueda del Brillo",
-          category: "cadenas",
           price: "$8",
-          description: "La Rueda del Brillo es una pieza que destaca por su acabado impecable y su capacidad para reflejar la...",
-          image: "https://aria-shop.sirv.com/image/image/cadenas/26/PORTADA.jpeg"
+          description: "Golden Kingdom es una joya que evoca majestuosidad y esplendor, inspirada en la riqueza y el poder de los reinos dorados. Su diseño transmite una sensación de grandeza...",
+          image: "https://aria-shop.sirv.com/image/image/pulseras/13/PORTADA.jpeg"
         },
         {
-          id: 27,
-          title: "Golden Flower",
-          category: "cadenas",
+          id: 14,
+          title: "Pulsera Feeling",
+          category: "bracelets",
           price: "$8",
-          description: "Golden Flower es una joya inspirada en la delicadeza y vitalidad de las flores, diseñada para...",
-          image: "https://aria-shop.sirv.com/image/image/cadenas/27/PORTADA.jpeg"
-        },
-        // {
-        //   id: 28,
-        //   title: "Brazalete de la Belleza",
-        //   category: "bracelets",
-        //   price: "$7",
-        //   description: "El Brazalete de la Belleza es una joya que destaca por su diseño armonioso y sofisticado, concebido para...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/28/PORTADA.jpeg"
-        // },
-        // {
-        //   id: 29,
-        //   title: "Golden Kingdom",
-        //   category: "bracelets",
-        //   price: "$7",
-        //   description: "Golden Kingdom es una joya que evoca majestuosidad y esplendor, inspirada en la riqueza y el poder de los reinos dorados. Su diseño transmite una sensación de grandeza...",
-        //   image: "https://aria-shop.sirv.com/image/image/pulseras/29/PORTADA.jpeg"
-        // },
-        // {
-        //   id: 30,
-        //   title: "Flor del Mar",
-        //   category: "cadenas",
-        //   price: "$8",
-        //   description: "Flor del Mar es una joya inspirada en los misterios y la belleza del océano. Su diseño evoca la...",
-        //   image: "https://aria-shop.sirv.com/image/image/cadenas/30/PORTADA.jpeg"
-        // },
-        // {
-        //   id: 31,
-        //   title: "Anillo Bright Heart",
-        //   category: "rings",
-        //   price: "$7",
-        //   description: "El Anillo Bright Heart es una joya que destaca por la delicadeza y el simbolismo...",
-        //   image: "https://aria-shop.sirv.com/image/image/anillos/31/PORTADA.jpeg"
-        // },
-         {
-          id: 32,
-          title: "Argolla Specials",
-          category: "argo",
-          price: "$5",
-          description: "Piezas que destacan por su diseño único y significativo, creadas para celebrar momentos especiales y vínculos profundos. Su...",
-          image: "https://aria-shop.sirv.com/image/image/argo/32/PORTADA.jpeg"
+          description: "Conecta con tus emociones y expresa tu personalidad con la pulsera Feeling. Esta...",
+          image: "https://aria-shop.sirv.com/image/image/pulseras/14/PORTADA.jpg"
         },
         {
-          id: 33,
-          title: "Better Life",
-          category: "cadenas",
+          id: 15,
+          title: "Pulsera Strong Link",
+          category: "bracelets",
           price: "$8",
-          description: "Es una joya que celebra la vitalidad y el optimismo a través de...",
-          image: "https://aria-shop.sirv.com/image/image/cadenas/33/PORTADA.jpeg"
+          description: "Destaca con la pulsera Strong Link, una pieza contemporánea diseñada para quienes buscan un accesorio con carácter y estilo..",
+          image: "https://aria-shop.sirv.com/image/image/pulseras/15/PORTADA.jpg"
+        },
+        {
+          id: 16,
+          title: "Set Pulseras Kingdom",
+          category: "sets",
+          price: "$11",
+          description: "Descubre la elegancia y el estilo contemporáneo con el set Kingdom, una colección que incluye piezas cuidadosamente...",
+          image: "https://aria-shop.sirv.com/image/image/sets/16/PORTADA.jpg"
+        },
+        {
+          id: 17,
+          title: "Set Elegante",
+          category: "sets",
+          price: "$12",
+          description: "Eleva tu estilo con el Set Elegante, una selección perfecta de joyas diseñadas para aportar sofisticación y clase a...",
+          image: "https://aria-shop.sirv.com/image/image/sets/17/PORTADA.jpg"
         },
       ];
       
