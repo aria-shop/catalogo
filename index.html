@@ -177,12 +177,44 @@
         }
 
         
-        
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade {
+            animation: fade .35s ease-out;
+}
+
     </style>
 </head>
+
 <body class="antialiased">
+    <div id="comingSoon" class="fixed inset-0 bg-black/70 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-2xl p-8 text-center max-w-sm w-full shadow-xl animate-fade">
+        <h2 class="text-2xl font-semibold tracking-wide mb-2">Men</h2>
+        <p class="text-gray-500 mb-6">
+            La próxima colección está en camino.
+        </p>
+        <button id="closeSoon"
+            class="px-6 py-2 rounded-full text-sm font-medium"
+            style="background:#0B3C8A;color:#fff;">
+            Entendido
+        </button>
+    </div>
+</div>
+
     <header class="container mx-auto px-4 py-8 flex flex-col items-center justify-between">
         <h1 class="logo serif mb-4">Aria</h1>
+    <div class="flex flex-col items-center mt-2">
+        <span class="text-sm tracking-widest uppercase text-gray-500 mb-2">
+            For
+        </span>
+        <button id="switchMen" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all"
+            style="background:#071371;color:#fff;">
+            <i class="fa-solid fa-mars"></i>
+            Men
+        </button>
+    </div>
         <!-- <div class="w-16 h-px bg-primary opacity-40 my-4"></div> -->
          <div class="flex items-center justify-center my-4">
             <span class="h-px w-12 bg-[var(--gold-color)] opacity-60"></span>
@@ -288,6 +320,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
     
     <script id="app-script">
+         document.getElementById('switchMen').addEventListener('click', () => {
+         window.location.href = './men.html'; 
+         });
+    
+        document.getElementById('switchMen').addEventListener('click', e => {
+            e.preventDefault();
+            document.getElementById('comingSoon').classList.remove('hidden');
+            document.getElementById('comingSoon').classList.add('flex');
+        });
+
+        document.getElementById('closeSoon').addEventListener('click', () => {
+            document.getElementById('comingSoon').classList.add('hidden');
+            document.getElementById('comingSoon').classList.remove('flex');
+    });
+
+
         // Configuración y funcionalidades
         document.addEventListener('DOMContentLoaded', function() {
             // Configuración del cliente Supabase (solo ejemplo para el prototipo)
@@ -645,9 +693,9 @@
 </div> -->
 
 <!-- Audio oculto -->
-<!-- <audio id="backgroundAudio" src="https://stream.zeno.fm/jtdc6ibwepkuv" loop></audio> -->
+<!-- <audio id="backgroundAudio" src="https://stream.zeno.fm/jtdc6ibwepkuv" loop></audio>
 
-<!-- <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('christmasModal');
     const modalContent = document.getElementById('christmasModalContent');
@@ -681,5 +729,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script> -->
 </body>
 </html>
-
-
