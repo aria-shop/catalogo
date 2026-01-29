@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aria - Catálogo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style id="app-style">
+        :root {
+            --primary-color: #071371;
+            --text-color: #F7F3A4;
+            --bg-color: #FFFFFF;
+            --light-bg: #fafafa;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --gold-color: #C9A24D;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+        }
+        
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .text-accent {
+            color: var(--text-color);
+        }
+        
+        .bg-accent {
+            background-color: var(--text-color);
+        }
+        
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--bg-color);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px var(--shadow);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+        
+        .product-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .category-pill {
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            background-color: rgba(138, 24, 20, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            transition: all 0.2s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        .swiper-container {
+            width: 100%;
+            height: 240px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .pagination-btn {
+            min-width: 36px;
+            height: 36px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.2s ease;
+        }
+        
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 640px) {
+            .filter-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(138, 24, 20, 0.4);
+            border-radius: 10px;
+        }
+
+        
+        
+    </style>
+</head>
+<body class="antialiased">
+    <header class="container mx-auto px-4 py-8 flex flex-col items-center justify-between">
+        <h1 class="logo serif mb-4">Aria</h1>
+    <div class="flex flex-col items-center mt-2">
+        <span class="text-sm tracking-widest uppercase text-gray-500 mb-2">
+            For
+        </span>
+        <button id="switchWomen" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all"
+            style="background:#8A1814;color:#fff;">
+            <i class="fa-solid fa-venus"></i>
+            Woman
+        </button>
+    </div>
+
+        <!-- <div class="w-16 h-px bg-primary opacity-40 my-4"></div> -->
+         <div class="flex items-center justify-center my-4">
+            <span class="h-px w-12 bg-[var(--gold-color)] opacity-60"></span>
+            <span class="mx-3 text-[var(--gold-color)] text-sm">✦</span>
+            <span class="h-px w-12 bg-[var(--gold-color)] opacity-60"></span>
+        </div>
+
+        <p class="text-center text-gray-600 max-w-md mb-8">Descubre nuestra colección exclusiva de productos diseñados para ti.</p>
+        
+        <div class="filter-container w-full mb-8 flex items-center justify-center flex-wrap" id="categoryFilters">
+            <button class="filter-btn active mx-2 mb-2 py-2 px-5 rounded-full transition-all" data-category="all">
+                Todos
+            </button>
+            <!-- Categorías dinámicas serán agregadas aquí -->
+            <div class="animate-pulse flex space-x-2">
+                <div class="h-10 w-24 bg-gray-200 rounded-full"></div>
+                <div class="h-10 w-20 bg-gray-200 rounded-full"></div>
+                <div class="h-10 w-28 bg-gray-200 rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pb-16">
+        <div id="loading" class="flex flex-col items-center justify-center py-16">
+            <div class="loader mb-4"></div>
+            <p class="text-gray-500">Cargando productos...</p>
+        </div>
+        
+        <div id="error" class="hidden flex flex-col items-center justify-center py-16">
+            <i class="fas fa-exclamation-triangle text-primary text-4xl mb-4"></i>
+            <h3 class="text-xl font-medium mb-2">No pudimos cargar los productos</h3>
+            <p class="text-gray-500">Por favor intenta nuevamente más tarde.</p>
+        </div>
+        
+        <div id="noResults" class="hidden flex flex-col items-center justify-center py-16">
+            <i class="fas fa-search text-primary text-4xl mb-4"></i>
+            <h3 class="text-xl font-medium mb-2">Estamos trabajando en añadir los productos</h3>
+            <p class="text-gray-500">Vuelve más trarde.</p>
+        </div>
+        
+        <div id="productGrid" class="product-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 hidden">
+            <!-- Productos dinámicos serán agregados aquí -->
+        </div>
+        
+        <div id="pagination" class="hidden mt-12 flex items-center justify-center">
+            <button id="prevPage" class="pagination-btn rounded-l-lg flex items-center justify-center">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div id="pageNumbers" class="flex items-center">
+                <!-- Números de página dinámicos -->
+            </div>
+            <button id="nextPage" class="pagination-btn rounded-r-lg flex items-center justify-center">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+    
+    <footer class="bg-primary py-8 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-accent text-2xl font-bold mb-2">Aria</h2>
+                <p class="text-accent opacity-80">Elegancia y estilo en cada detalle</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end">
+                <div class="flex space-x-4 mb-4">
+                    <a href="https://www.instagram.com/aria.mcbo/" target="_blank" class="text-accent hover:opacity-80 transition-opacity">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <!-- <a href="javascript:void(0)" class="text-accent hover:opacity-80 transition-opacity">
+                        <i class="fab fa-facebook text-xl"></i> -->
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=584249339828&text=Hola%2C%20estoy%20interesad%40%20en%20mas%20informaci%C3%B3n%20sobre%20Aria." target="_blank" class="text-accent hover:opacity-80 transition-opacity">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+                <p class="text-accent opacity-80 text-sm">© 2026 Aria. Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+    
+    <template id="productCardTemplate">
+        <div class="product-card card-shadow fade-in">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Las imágenes del carrusel serán agregadas dinámicamente -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="p-4 flex flex-col">
+                <h3 class="product-title serif mb-2"></h3>
+                <div class="flex items-center justify-between mb-3">
+                    <span class="price text-primary font-bold"></span>
+                    <span class="category-pill"></span>
+                </div>
+                <a href="javascript:void(0)" class="whatsapp-btn mt-2 py-3 px-4 rounded-md text-center font-medium flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Encargar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </template>
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+    
+    <script id="app-script">
+        document.getElementById('switchWomen').addEventListener('click', () => {
+        window.location.href = './index.html'; 
+        });
+
+        // Configuración y funcionalidades
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración del cliente Supabase (solo ejemplo para el prototipo)
+            const supabaseUrl = 'https://kgcdjqnaxqsbfbapwhml.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnY2RqcW5heHFzYmZiYXB3aG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0ODYxNDYsImV4cCI6MjA4MDA2MjE0Nn0.HYx4kHbD2JPlAj9yqhB_DbG3LQ_pBExil-WPK8iwDvo';
+            
+            // Estado de la aplicación
+            const state = {
+                products: [],
+                categories: [],
+                currentCategory: 'all',
+                currentPage: 1,
+                productsPerPage: 8,
+                loading: true,
+                error: false
+            };
+            
+            // Referencias DOM
+            const elements = {
+                productGrid: document.getElementById('productGrid'),
+                categoryFilters: document.getElementById('categoryFilters'),
+                pagination: document.getElementById('pagination'),
+                pageNumbers: document.getElementById('pageNumbers'),
+                prevPage: document.getElementById('prevPage'),
+                nextPage: document.getElementById('nextPage'),
+                loading: document.getElementById('loading'),
+                error: document.getElementById('error'),
+                noResults: document.getElementById('noResults'),
+                productCardTemplate: document.getElementById('productCardTemplate')
+            };
+            
+            // Cliente de Supabase
+            const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+            // API real desde Supabase
+            const api = {
+                async getProducts() {
+                    const { data, error } = await supabase
+                        .from('products_men')
+                        .select('*')
+                        .order('id', { ascending: true });
+
+                    if (error) throw error;
+
+                    // Convertir precios a formato moneda si quieres
+                    return data.map(item => ({
+                        id: item.id,
+                        title: item.title,
+                        price: `$${item.price.toLocaleString("es-VE")}`,
+                        category: item.category,
+                        images: item.images
+                    }));
+                },
+
+                async getCategories() {
+                    const { data, error } = await supabase
+                        .from('products_men')
+                        .select('category');
+
+                    if (error) throw error;
+
+                    // Eliminar repetidas
+                    const unique = [...new Set(data.map(r => r.category))];
+                    return unique;
+                }
+            };
+
+            
+            // Inicializar la aplicación
+            initApp();
+            
+            async function initApp() {
+                try {
+                    // Cargar datos
+                    const [products, categories] = await Promise.all([
+                        api.getProducts(),
+                        api.getCategories()
+                    ]);
+
+                    
+                    // Actualizar el estado
+                    state.products = products;
+                    state.categories = categories;
+                    state.loading = false;
+                    
+                    // Renderizar la interfaz
+                    renderCategoryFilters();
+                    renderProducts();
+                    renderPagination();
+                    
+                    // Mostrar productos
+                    elements.loading.classList.add('hidden');
+                    elements.productGrid.classList.remove('hidden');
+                    elements.pagination.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error inicializando la aplicación:', error);
+                    state.loading = false;
+                    state.error = true;
+                    elements.loading.classList.add('hidden');
+                    elements.error.classList.remove('hidden');
+                }
+            }
+            
+            // Renderizar filtros de categoría
+            function renderCategoryFilters() {
+                // Limpiar cargadores
+                elements.categoryFilters.innerHTML = `
+                    <button class="filter-btn active mx-2 mb-2 py-2 px-5 rounded-full transition-all" data-category="all">
+                        Todos
+                    </button>
+                `;
+                
+                // Agregar categorías
+                state.categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.className = 'filter-btn mx-2 mb-2 py-2 px-5 rounded-full transition-all';
+                    button.textContent = category;
+                    button.dataset.category = category;
+                    elements.categoryFilters.appendChild(button);
+                });
+                
+                // Agregar eventos a los botones
+                const filterButtons = elements.categoryFilters.querySelectorAll('.filter-btn');
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Actualizar botones activos
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Actualizar estado y renderizar
+                        state.currentCategory = this.dataset.category;
+                        state.currentPage = 1;
+                        renderProducts();
+                        renderPagination();
+                    });
+                });
+            }
+            
+            // Filtrar y paginar productos
+            function getFilteredProducts() {
+                // Filtrar por categoría
+                const filtered = state.currentCategory === 'all' 
+                    ? state.products 
+                    : state.products.filter(p => p.category === state.currentCategory);
+                
+                // Calcular paginación
+                const startIndex = (state.currentPage - 1) * state.productsPerPage;
+                const endIndex = startIndex + state.productsPerPage;
+                
+                return {
+                    total: filtered.length,
+                    items: filtered.slice(startIndex, endIndex)
+                };
+            }
+            
+            // Renderizar productos
+            function renderProducts() {
+                const { items: products, total } = getFilteredProducts();
+                
+                // Limpiar grid
+                elements.productGrid.innerHTML = '';
+                
+                // Mostrar mensaje si no hay resultados
+                if (total === 0) {
+                    elements.productGrid.classList.add('hidden');
+                    elements.pagination.classList.add('hidden');
+                    elements.noResults.classList.remove('hidden');
+                    return;
+                } else {
+                    elements.productGrid.classList.remove('hidden');
+                    elements.pagination.classList.remove('hidden');
+                    elements.noResults.classList.add('hidden');
+                }
+                
+                // Renderizar productos
+                products.forEach(product => {
+                    // Clonar template
+                    const template = elements.productCardTemplate.content.cloneNode(true);
+                    const card = template.querySelector('.product-card');
+                    
+                    // Llenar datos
+                    card.querySelector('.product-title').textContent = product.title;
+                    card.querySelector('.price').textContent = product.price;
+                    card.querySelector('.category-pill').textContent = product.category;
+                    
+                    // Configurar botón de WhatsApp
+                    const whatsappBtn = card.querySelector('.whatsapp-btn');
+                    whatsappBtn.addEventListener('click', () => {
+                        const message = `Hola, quiero encargar el producto: ${product.title}`;
+                        const encodedMessage = encodeURIComponent(message);
+                        window.open(`https://wa.me/5804249339828?text=${encodedMessage}`, '_blank');
+                    });
+                    
+                    // Cargar imágenes en el carrusel
+                    const swiperWrapper = card.querySelector('.swiper-wrapper');
+                    
+                    product.images.forEach((imgUrl, index) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'swiper-slide';
+                        
+                        const img = document.createElement('img');
+                        img.src = imgUrl;
+                        img.alt = `${product.title} - Imagen ${index + 1}`;
+                        img.className = 'w-full h-full object-cover';
+                        
+                        slide.appendChild(img);
+                        swiperWrapper.appendChild(slide);
+                    });
+                    
+                    // Agregar al grid
+                    elements.productGrid.appendChild(card);
+                });
+                
+                // Inicializar Swiper para cada producto
+                const swiperContainers = elements.productGrid.querySelectorAll('.swiper-container');
+                swiperContainers.forEach(container => {
+                    new Swiper(container, {
+                        loop: true,
+                        pagination: {
+                            el: container.querySelector('.swiper-pagination'),
+                            clickable: true
+                        },
+                        autoplay: {
+                            delay: 5000,
+                        },
+                    });
+                });
+            }
+            
+            // Renderizar paginación
+            function renderPagination() {
+                const { total } = getFilteredProducts();
+                const totalPages = Math.ceil(total / state.productsPerPage);
+                
+                // Ocultar paginación si solo hay una página
+                if (totalPages <= 1) {
+                    elements.pagination.classList.add('hidden');
+                    return;
+                }
+                
+                elements.pagination.classList.remove('hidden');
+                
+                // Configurar botones prev/next
+                elements.prevPage.disabled = state.currentPage === 1;
+                elements.nextPage.disabled = state.currentPage === totalPages;
+                
+                elements.prevPage.style.opacity = state.currentPage === 1 ? '0.5' : '1';
+                elements.nextPage.style.opacity = state.currentPage === totalPages ? '0.5' : '1';
+                
+                // Eventos de botones
+                elements.prevPage.onclick = () => {
+                    if (state.currentPage > 1) {
+                        state.currentPage--;
+                        renderProducts();
+                        renderPagination();
+                        window.scrollTo(0, 0);
+                    }
+                };
+                
+                elements.nextPage.onclick = () => {
+                    if (state.currentPage < totalPages) {
+                        state.currentPage++;
+                        renderProducts();
+                        renderPagination();
+                        window.scrollTo(0, 0);
+                    }
+                };
+                
+                // Renderizar números de página
+                elements.pageNumbers.innerHTML = '';
+                
+                // Determinar qué números mostrar
+                let pagesToShow = [];
+                if (totalPages <= 5) {
+                    pagesToShow = Array.from({ length: totalPages }, (_, i) => i + 1);
+                } else {
+                    if (state.currentPage <= 3) {
+                        pagesToShow = [1, 2, 3, 4, '...', totalPages];
+                    } else if (state.currentPage >= totalPages - 2) {
+                        pagesToShow = [1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+                    } else {
+                        pagesToShow = [1, '...', state.currentPage - 1, state.currentPage, state.currentPage + 1, '...', totalPages];
+                    }
+                }
+                
+                pagesToShow.forEach(page => {
+                    if (page === '...') {
+                        const span = document.createElement('span');
+                        span.textContent = '...';
+                        span.className = 'mx-1 flex items-center justify-center w-8';
+                        elements.pageNumbers.appendChild(span);
+                    } else {
+                        const button = document.createElement('button');
+                        button.className = `pagination-btn rounded mx-1 flex items-center justify-center ${page === state.currentPage ? 'active' : ''}`;
+                        button.textContent = page;
+                        button.addEventListener('click', () => {
+                            state.currentPage = page;
+                            renderProducts();
+                            renderPagination();
+                            window.scrollTo(0, 0);
+                        });
+                        elements.pageNumbers.appendChild(button);
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- Modal navideño con botón aceptar -->
+<!-- <div id="christmasModal" style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10000;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.4s ease;
+">
+    <div style="
+        background:#e3e3e3;
+        color:#000000;
+        border-radius:12px;
+        max-width:400px;
+        width:90%;
+        padding:30px;
+        text-align:center;
+        position:relative;
+        box-shadow:0 10px 30px rgba(0,0,0,0.5);
+        font-family:'Raleway', sans-serif;
+        transform: translateY(-50px);
+        transition: transform 0.4s ease;
+    " id="christmasModalContent">
+        <h2 style="font-family:'Playfair Display', serif; font-size:1.8rem; margin-bottom:15px;">🎉Feliz año nuevo🎉</h2>
+        <p style="font-size:1rem; line-height:1.5; margin-bottom:20px;">
+            Nuevo año ¡Nuevas oportunidades! Gracias por ser parte de nuestra comunidad. Que este año esté lleno de éxito y felicidad para ti.
+        </p>
+        <button id="acceptChristmas" style="
+            background:#8A1814;
+            color:#fff;
+            border:none;
+            padding:10px 20px;
+            border-radius:6px;
+            font-size:1rem;
+            cursor:pointer;
+            transition: all 0.2s ease;
+        " onmouseover="this.style.opacity=0.9;" onmouseout="this.style.opacity=1;">
+            Descubrir catálogo
+        </button>
+    </div>
+</div> -->
+
+<!-- Audio oculto -->
+<!-- <audio id="backgroundAudio" src="https://stream.zeno.fm/jtdc6ibwepkuv" loop></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('christmasModal');
+    const modalContent = document.getElementById('christmasModalContent');
+    const acceptBtn = document.getElementById('acceptChristmas');
+    const audio = document.getElementById('backgroundAudio');
+
+    // Mostrar modal con animación
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.pointerEvents = 'auto';
+        modalContent.style.transform = 'translateY(0)';
+        document.body.style.overflow = 'hidden';
+    }, 500);
+        document.body.style.overflow = 'hidden';
+    // Al hacer click en aceptar: cerrar modal y reproducir audio
+    acceptBtn.addEventListener('click', () => {
+        modal.style.opacity = '0';
+        modal.style.pointerEvents = 'none';
+        document.body.style.overflow = 'auto';
+        modalContent.style.transform = 'translateY(-50px)';
+        // Reproducir música
+        document.body.style.overflow = 'auto'; // Restaurar scroll
+        audio.volume = 0.1; // Volumen bajo
+        audio.play().catch(err => console.log("Error al reproducir audio:", err));
+    });
+    modal.querySelector('div').addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+});
+</script> -->
+</body>
+</html>
